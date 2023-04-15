@@ -4,7 +4,9 @@
       class="bg-white p-8 border-gray-300 border rounded-md shadow-lg max-w-xl w-full"
     >
       <div class="text-center">
-        <p class="mt-2 text-sm text-gray-500">{{ error?.message }}</p>
+        <p class="mt-2 text-sm text-gray-500">
+          {{ error?.message }}
+        </p>
         <div class="mt-6">
           <nuxt-link
             to="/"
@@ -19,5 +21,5 @@
 </template>
 
 <script setup lang="ts">
-const error = useError();
+const error = useError()
 </script>
