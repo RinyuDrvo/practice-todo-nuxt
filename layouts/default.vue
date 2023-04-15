@@ -1,11 +1,9 @@
 <template>
   <div>
-    <header>
-      <h1>header</h1>
-    </header>
-    <slot />
-    <footer>
-      <h1>footer</h1>
-    </footer>
+    <Header />
+    <main class="flex-grow pt-16 pb-20">
+      <slot />
+    </main>
+    <Footer />
   </div>
 </template>
