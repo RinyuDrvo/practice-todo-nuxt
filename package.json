@@ -8,8 +8,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint './**/*.{ts,vue}' .",
-    "lint:fix": "eslint --fix './**/*.{ts,vue}' .",
-    "format": "prettier --write './**/*.{js,ts,vue}'"
+    "lint:precommit": "eslint --ext .vue,.ts,.json src/ --max-warnings 0",
+    "format": "prettier --write './**/*.{ts,vue, json}'",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
@@ -17,6 +18,8 @@
     "@nuxtjs/tailwindcss": "^6.6.6",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
     "nuxt": "^3.3.3",
     "prettier": "^2.8.7"
   },
@@ -24,5 +27,9 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": "npm run lint:precommit",
+    "*.{ts,vue,json}": "npm run format"
   }
 }
