@@ -77,7 +77,7 @@ API からのエラーメッセージを適切に表示する。
 # TODO
 
 - [x] linter 導入
-- [ ] Prettier 導入
+- [x] Prettier 導入
 - [x] tailwind 導入
 - [ ] ヘッダ作成
 - [ ] フッター作成
