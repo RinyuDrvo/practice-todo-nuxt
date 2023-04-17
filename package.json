@@ -8,14 +8,17 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint './**/*.{ts,vue}' .",
-    "lint:fix": "eslint --fix './**/*.{ts,vue}' ."
+    "lint:fix": "eslint --fix './**/*.{ts,vue}' .",
+    "format": "prettier --write './**/*.{js,ts,vue}'"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/tailwindcss": "^6.6.6",
     "eslint": "^8.38.0",
-    "nuxt": "^3.3.3"
+    "eslint-config-prettier": "^8.8.0",
+    "nuxt": "^3.3.3",
+    "prettier": "^2.8.7"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
