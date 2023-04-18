@@ -9,7 +9,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint './**/*.{ts,vue}' .",
     "lint:precommit": "eslint './**/*.{ts,vue}' . --max-warnings 0",
-    "format": "prettier --write './**/*.{ts,vue, json}'",
+    "format": "prettier --write './**/*.{ts,vue}'",
     "prepare": "husky install"
   },
   "devDependencies": {
