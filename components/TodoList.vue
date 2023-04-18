@@ -1,6 +1,11 @@
 <template>
   <div class="container mx-auto px-4">
     <h1>TODO LIST</h1>
+    <NuxtLink
+      to="/todo/insert"
+      class="bg-blue-500 text-white px-4 py-2 mb-4 inline-block"
+      >Add Todo</NuxtLink
+    >
     <ul>
       <TodoItem
         v-for="todo in todoList"
@@ -17,10 +22,6 @@
 import { Todo } from '~/models/Todo'
 
 const todoList = reactive<Todo[]>([])
-
-// const addTodo = (newTodo: Todo) => {
-//   todoList.push(newTodo)
-// }
 
 /** Todo状態切り替えイベント */
 const toggleTodo = (id: number) => {
