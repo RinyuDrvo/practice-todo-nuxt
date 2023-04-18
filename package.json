@@ -8,7 +8,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint './**/*.{ts,vue}' .",
-    "lint:precommit": "eslint --ext .vue,.ts,.json src/ --max-warnings 0",
+    "lint:precommit": "eslint './**/*.{ts,vue}' . --max-warnings 0",
     "format": "prettier --write './**/*.{ts,vue, json}'",
     "prepare": "husky install"
   },
