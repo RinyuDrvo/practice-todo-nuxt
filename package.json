@@ -20,6 +20,7 @@
     "eslint-config-prettier": "^8.8.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
+    "msw": "^1.2.1",
     "nuxt": "^3.3.3",
     "prettier": "^2.8.7"
   },
@@ -31,5 +32,8 @@
   "lint-staged": {
     "*.{ts,vue}": "npm run lint:precommit",
     "*.{ts,vue,json}": "npm run format"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
