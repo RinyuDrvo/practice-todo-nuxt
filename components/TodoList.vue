@@ -8,7 +8,7 @@
     >
     <ul>
       <TodoItem
-        v-for="todo in todoList"
+        v-for="todo in data?.todos"
         :key="todo.id"
         :todo="todo"
         @toggle-todo="toggleTodo"
@@ -19,14 +19,16 @@
 </template>
 
 <script setup lang="ts">
-import { Todo } from '~/models/Todo'
+import { GetTodosResponse } from '~/models/GetTodosResponse'
 
-const todoList = reactive<Todo[]>([])
+// Todo一覧取得
+// TODO: 初回レンダリング時にリクエストされていない
+const { data } = await useFetch<GetTodosResponse>('api/todos')
 
 /** Todo状態切り替えイベント */
 const toggleTodo = (id: number) => {
   /** 更新対象のTodo */
-  const targetTodo = todoList.find((todo) => todo.id === id)
+  const targetTodo = data.value?.todos?.find((todo) => todo.id === id)
   /** 完了状態の斑点 */
   if (targetTodo) targetTodo.completed = !targetTodo.completed
   // TODO: 永続化
@@ -35,25 +37,10 @@ const toggleTodo = (id: number) => {
 /** Todo削除イベント */
 const deleteTodo = (id: number) => {
   /** 削除対象のインデックス */
-  const targetIndex = todoList.findIndex((todo) => todo.id === id)
+  const targetIndex = data.value?.todos?.findIndex((todo) => todo.id === id)
   /** 対象インデックスの配列要素を削除 */
-  if (targetIndex !== -1) todoList.splice(targetIndex, 1)
+  if (targetIndex !== -1 && targetIndex)
+    data.value?.todos?.splice(targetIndex, 1)
   // TODO: 永続化
 }
-
-/** モックデータ設定 TODO: 削除 */
-onMounted(() => {
-  todoList.push({
-    id: 1,
-    title: 'task1',
-    detail: 'hoge',
-    completed: false,
-  })
-  todoList.push({
-    id: 2,
-    title: 'task2',
-    detail: 'fuga',
-    completed: false,
-  })
-})
 </script>
