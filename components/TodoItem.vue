@@ -1,20 +1,29 @@
 <template>
   <li
-    class="flex flex-col justify-between items-start my-2 border-2 border-gray-300 p-2"
+    class="flex items-center justify-between bg-white p-4 mb-2 rounded shadow"
   >
-    <div class="flex justify-between items-center w-full">
-      <span :class="{ 'line-through': todo.completed }">{{ todo.title }}</span>
-      <div>
-        <button
-          class="bg-blue-500 text-white px-2 py-1 mr-2"
-          @click="toggleTodo"
-        >
-          Toggle
-        </button>
-        <button class="bg-red-500 text-white px-2 py-1" @click="deleteTodo">
-          Delete
-        </button>
-      </div>
+    <div @click="toggleTodo">
+      <input
+        type="checkbox"
+        class="form-checkbox text-blue-500"
+        :checked="todo.completed"
+      />
+      <span :class="{ 'line-through': todo.completed }" class="ml-2">{{
+        todo.title
+      }}</span>
+    </div>
+    <div>
+      <NuxtLink
+        :to="`/todo/${todo.id}`"
+        class="bg-blue-500 text-white px-2 py-2 rounded mr-2"
+        >Edit</NuxtLink
+      >
+      <button
+        class="bg-red-500 text-white px-2 py-1 rounded"
+        @click.stop="deleteTodo"
+      >
+        Delete
+      </button>
     </div>
   </li>
 </template>
