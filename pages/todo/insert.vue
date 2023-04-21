@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-// import { InsertTodoRequest } from 'models/InsertTodoRequest'
+import { InsertTodoRequest } from 'models/InsertTodoRequest'
 
 /** 新規タイトル */
 const newTodoTitle = ref('')
@@ -43,12 +43,22 @@ const newTodoDetails = ref('')
 /** TODO追加イベント */
 const addTodo = async () => {
   /** リクエストプロパティ */
-  // const request: InsertTodoRequest = {
-  //   title: newTodoTitle.value,
-  //   detail: newTodoDetails.value,
-  // }
+  const request: InsertTodoRequest = {
+    title: newTodoTitle.value,
+    detail: newTodoDetails.value,
+  }
 
-  // TODO: API呼び出し
+  // API呼び出し
+  const { error } = await useFetch('/api/todos', {
+    method: 'POST',
+    body: request,
+  })
+
+  // エラーハンドリング
+  if (error.value) {
+    alert(error.value.statusCode + ': ' + error.value.message)
+    return
+  }
 
   // 一覧に戻る
   await navigateTo('/')

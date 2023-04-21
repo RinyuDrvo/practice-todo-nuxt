@@ -1,5 +1,6 @@
 import { Todo } from '~/models/Todo'
 
+/** Todo一覧取得API */
 export default defineEventHandler(() => {
   const mode = useRuntimeConfig()
   // 開発環境の場合

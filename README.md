@@ -1,6 +1,6 @@
 # practice-todo-nuxt
 
-Nuxt.js を使用した学習用デモアプリ
+Nuxt3 を使用した学習用デモアプリ
 
 # 要件
 
