@@ -34,7 +34,10 @@
 </template>
 
 <script setup lang="ts">
+import { useToast } from 'vue-toastification'
 import { InsertTodoRequest } from 'models/InsertTodoRequest'
+
+const toast = useToast()
 
 /** 新規タイトル */
 const newTodoTitle = ref('')
@@ -60,6 +63,9 @@ const addTodo = async () => {
     return
   }
 
+  // 成功時
+  // トースト表示
+  toast.success('Todo added successfully')
   // 一覧に戻る
   await navigateTo('/')
 }
