@@ -8,7 +8,7 @@
     >
     <ul>
       <TodoItem
-        v-for="todo in data?.todos"
+        v-for="todo in todos"
         :key="todo.id"
         :todo="todo"
         @toggle-todo="toggleTodo"
@@ -19,16 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import { GetTodosResponse } from '~/models/GetTodosResponse'
+import { Todo } from '~/models/Todo'
 
 // Todo一覧取得
-// TODO: 初回レンダリング時にリクエストされていない
-const { data } = await useFetch<GetTodosResponse>('api/todos')
+const { data: todos } = await useFetch<Todo[]>('/api/todos')
 
 /** Todo状態切り替えイベント */
 const toggleTodo = (id: number) => {
   /** 更新対象のTodo */
-  const targetTodo = data.value?.todos?.find((todo) => todo.id === id)
+  const targetTodo = todos.value?.find((todo) => todo.id === id)
   /** 完了状態の斑点 */
   if (targetTodo) targetTodo.completed = !targetTodo.completed
   // TODO: 永続化
@@ -37,10 +36,9 @@ const toggleTodo = (id: number) => {
 /** Todo削除イベント */
 const deleteTodo = (id: number) => {
   /** 削除対象のインデックス */
-  const targetIndex = data.value?.todos?.findIndex((todo) => todo.id === id)
+  const targetIndex = todos.value?.findIndex((todo) => todo.id === id)
   /** 対象インデックスの配列要素を削除 */
-  if (targetIndex !== -1 && targetIndex)
-    data.value?.todos?.splice(targetIndex, 1)
+  if (targetIndex !== -1 && targetIndex) todos.value?.splice(targetIndex, 1)
   // TODO: 永続化
 }
 </script>
