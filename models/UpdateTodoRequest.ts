@@ -1,4 +1,4 @@
 import { Todo } from './Todo'
 
 /** Todo登録リクエストモデル */
-export type InsertTodoRequest = Omit<Todo, 'id' | 'completed'>
+export type UpdateTodoRequest = Omit<Todo, 'id'>
