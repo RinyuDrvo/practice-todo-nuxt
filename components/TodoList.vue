@@ -26,7 +26,7 @@ import { UpdateTodoRequest } from '~/models/UpdateTodoRequest'
 const toast = useToast()
 
 // Todo一覧取得
-const { data: todos } = await useFetch<Todo[]>('/api/todos')
+const { data: todos, refresh } = await useFetch<Todo[]>('/api/todos')
 
 /** Todo状態切り替えイベント */
 const toggleTodo = async (id: number) => {
@@ -34,14 +34,12 @@ const toggleTodo = async (id: number) => {
   const targetTodo = todos.value?.find((todo) => todo.id === id)
   if (!targetTodo) return
   targetTodo.completed = !targetTodo.completed
-  // 永続化
-  /** リクエスト */
+  // APIリクエスト
   const request: UpdateTodoRequest = {
     title: targetTodo.title,
     detail: targetTodo.detail,
     completed: targetTodo.completed,
   }
-  // APIリクエスト
   const { error } = await useFetch(`/api/todos/${id}`, {
     method: 'PUT',
     body: request,
@@ -49,18 +47,30 @@ const toggleTodo = async (id: number) => {
 
   // エラーハンドリング
   if (!error.value) {
-    toast.success('todo completed update')
+    toast.success('Todo status update has been successfully completed')
   } else {
     toast.error(error.value?.statusCode + ': ' + error.value?.message)
   }
 }
 
 /** Todo削除イベント */
-const deleteTodo = (id: number) => {
+const deleteTodo = async (id: number) => {
   /** 削除対象のインデックス */
   const targetIndex = todos.value?.findIndex((todo) => todo.id === id)
   /** 対象インデックスの配列要素を削除 */
   if (targetIndex !== -1 && targetIndex) todos.value?.splice(targetIndex, 1)
-  // TODO: 永続化
+  // APIリクエスト
+  const { error } = await useFetch(`/api/todos/${id}`, {
+    method: 'DELETE',
+  })
+
+  // エラーハンドリング
+  if (!error.value) {
+    toast.success('Todo has been successfully deleted')
+    // 一覧更新
+    refresh()
+  } else {
+    toast.error(error.value?.statusCode + ': ' + error.value?.message)
+  }
 }
 </script>
