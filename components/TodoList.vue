@@ -19,18 +19,40 @@
 </template>
 
 <script setup lang="ts">
+import { useToast } from 'vue-toastification'
 import { Todo } from '~/models/Todo'
+import { UpdateTodoRequest } from '~/models/UpdateTodoRequest'
+
+const toast = useToast()
 
 // Todo一覧取得
 const { data: todos } = await useFetch<Todo[]>('/api/todos')
 
 /** Todo状態切り替えイベント */
-const toggleTodo = (id: number) => {
+const toggleTodo = async (id: number) => {
   /** 更新対象のTodo */
   const targetTodo = todos.value?.find((todo) => todo.id === id)
-  /** 完了状態の斑点 */
-  if (targetTodo) targetTodo.completed = !targetTodo.completed
-  // TODO: 永続化
+  if (!targetTodo) return
+  targetTodo.completed = !targetTodo.completed
+  // 永続化
+  /** リクエスト */
+  const request: UpdateTodoRequest = {
+    title: targetTodo.title,
+    detail: targetTodo.detail,
+    completed: targetTodo.completed,
+  }
+  // APIリクエスト
+  const { error } = await useFetch(`/api/todos/${id}`, {
+    method: 'PUT',
+    body: request,
+  })
+
+  // エラーハンドリング
+  if (!error.value) {
+    toast.success('todo completed update')
+  } else {
+    toast.error(error.value?.statusCode + ': ' + error.value?.message)
+  }
 }
 
 /** Todo削除イベント */
