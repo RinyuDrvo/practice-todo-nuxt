@@ -84,8 +84,9 @@ API からのエラーメッセージを適切に表示する。
 - [x] 一覧画面実装
 - [x] 新規作成画面実装
 - [x] 詳細・編集画面実装
-- [ ] モック API 実装
+- [x] モック API 実装
 - [ ] ユニットテスト導入
+      (https://github.com/danielroe/nuxt-vitest)
 
 # Setup
 
