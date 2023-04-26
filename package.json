@@ -11,7 +11,8 @@
     "lint:precommit": "eslint './**/*.{ts,vue}' . --max-warnings 0",
     "format": "prettier --write './**/*.{ts,vue}'",
     "prepare": "husky install",
-    "test": "vitest"
+    "test": "vitest --config ./vitest.config.mts run",
+    "test:watch": "vitest --config ./vitest.config.mts"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
