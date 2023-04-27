@@ -55,10 +55,6 @@ const toggleTodo = async (id: number) => {
 
 /** Todo削除イベント */
 const deleteTodo = async (id: number) => {
-  /** 削除対象のインデックス */
-  const targetIndex = todos.value?.findIndex((todo) => todo.id === id)
-  /** 対象インデックスの配列要素を削除 */
-  if (targetIndex !== -1 && targetIndex) todos.value?.splice(targetIndex, 1)
   // APIリクエスト
   const { error } = await useFetch(`/api/todos/${id}`, {
     method: 'DELETE',
