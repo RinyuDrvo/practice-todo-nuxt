@@ -87,6 +87,7 @@ API からのエラーメッセージを適切に表示する。
 - [x] モック API 実装
 - [ ] ユニットテスト導入
       (https://github.com/danielroe/nuxt-vitest)
+      ※props を含むコンポーネントをマウントする対応がまだ実装されていない
 
 # Setup
 
