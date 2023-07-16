@@ -54,6 +54,9 @@ API からのエラーメッセージを適切に表示する。
 - [ ] ユニットテスト導入
       (https://github.com/danielroe/nuxt-vitest)
       ※props を含むコンポーネントをマウントする対応がまだ実装されていない
+- [ ] APIつなぎこみ
+- [ ] コンポーネントパーツ化（パッケージ化）
+- [ ] Storybook導入
 
 # Setup
 
