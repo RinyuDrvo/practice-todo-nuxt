@@ -18,7 +18,7 @@
         class="bg-blue-500 text-white px-2 py-2 rounded mr-2"
         >Edit</NuxtLink
       >
-      <AtomsButton :label="'Delete'" @click.stop="deleteTodo" />
+      <AtomsButton label="Delete" @click.stop="deleteTodo" />
     </div>
   </li>
 </template>
