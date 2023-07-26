@@ -5,3 +5,7 @@ node_modules
 
 # Test
 tests/**/__snapshots__
+
+# Storybook
+.storybook/auto-imports.d.ts
+.storybook/components.d.ts
