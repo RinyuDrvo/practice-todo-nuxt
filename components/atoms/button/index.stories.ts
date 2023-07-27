@@ -6,13 +6,25 @@ type Story = StoryObj<typeof Button>
 const meta: Meta<typeof Button> = {
   title: 'button',
   component: Button,
+  render: (args) => ({
+    components: { Button },
+    setup() {
+      return { args }
+    },
+    template: "<Button v-bind='args' />",
+  }),
 }
 
 export const Default: Story = {
-  render: () => ({
-    components: { Button },
-    template: "<Button label='delete' />",
-  }),
+  args: {
+    label: 'Button',
+  },
+}
+
+export const Delete: Story = {
+  args: {
+    label: 'Delete',
+  },
 }
 
 export default meta
