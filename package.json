@@ -14,7 +14,8 @@
     "test": "vitest --config ./vitest.config.mts run",
     "test:watch": "vitest --config ./vitest.config.mts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint-staged": "lint-staged --config .lintstagedrc.js"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
@@ -27,13 +28,14 @@
     "@storybook/testing-library": "^0.2.0",
     "@storybook/vue3": "^7.1.1",
     "@storybook/vue3-vite": "^7.1.1",
+    "@testing-library/vue": "^7.0.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-storybook": "^0.6.13",
+    "happy-dom": "^10.5.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "nuxt": "^3.3.3",
-    "nuxt-vitest": "^0.6.10",
     "prettier": "^2.8.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -41,6 +43,7 @@
     "ts-node": "^10.9.1",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
+    "vitest": "^0.33.0",
     "vue-toastification": "^2.0.0-rc.5"
   },
   "dependencies": {
