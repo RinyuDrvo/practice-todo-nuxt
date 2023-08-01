@@ -18,9 +18,6 @@ describe('TodoList.vue', () => {
         props: {
           ...defaultTodoProps,
         },
-        global: {
-          stubs: ['NuxtLink', 'AtomsButton'],
-        },
       })
       const element = await screen.findByTestId('title')
       expect(element.textContent).toBe(defaultTodoProps.todo.title)
@@ -34,9 +31,6 @@ describe('TodoList.vue', () => {
       const screen = render(TodoItem, {
         props: {
           ...defaultTodoProps,
-        },
-        global: {
-          stubs: ['NuxtLink', 'AtomsButton'],
         },
       })
       const element = await screen.findByTestId('edit-link')
