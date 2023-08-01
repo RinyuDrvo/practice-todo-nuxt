@@ -8,9 +8,12 @@
         class="form-checkbox text-blue-500"
         :checked="todo.completed"
       />
-      <span :class="{ 'line-through': todo.completed }" class="ml-2">{{
-        todo.title
-      }}</span>
+      <span
+        :class="{ 'line-through': todo.completed }"
+        class="ml-2"
+        data-testid="title"
+        >{{ todo.title }}</span
+      >
     </div>
     <div>
       <NuxtLink
