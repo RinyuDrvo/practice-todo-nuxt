@@ -23,7 +23,16 @@ describe('TodoList.vue', () => {
       expect(element.textContent).toBe(defaultTodoProps.todo.title)
     })
 
-    it.todo('toggleTodo emit is triggered when clicked title or checkbox')
+    it('TodoをクリックしたらtoggleTodo emitが発火すること', async () => {
+      const screen = render(TodoItem, {
+        props: {
+          ...defaultTodoProps,
+        },
+      })
+      const element = await screen.findByTestId('todo')
+      await element.click()
+      expect(screen.emitted().toggleTodo).toBeTruthy()
+    })
   })
 
   describe('編集ボタン', () => {
@@ -41,7 +50,18 @@ describe('TodoList.vue', () => {
   })
 
   describe('削除ボタン', () => {
-    it.todo('ボタンに「Delete」と表示されていること')
-    it.todo('deleteTodo emit is triggered when clicked delete button')
+    it.todo(
+      '削除ボタンをクリックしたらdeleteTodo emitが発火すること',
+      async () => {
+        const screen = render(TodoItem, {
+          props: {
+            ...defaultTodoProps,
+          },
+        })
+        const element = await screen.findByTestId('delete')
+        await element.click()
+        expect(screen.emitted().deleteTodo).toBeTruthy()
+      }
+    )
   })
 })

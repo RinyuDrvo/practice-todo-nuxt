@@ -2,7 +2,7 @@
   <li
     class="flex items-center justify-between bg-white p-4 mb-2 rounded shadow"
   >
-    <div @click="toggleTodo">
+    <div data-testid="todo" @click="toggleTodo">
       <input
         type="checkbox"
         class="form-checkbox text-blue-500"
@@ -22,7 +22,11 @@
         data-testid="edit-link"
         >Edit</NuxtLink
       >
-      <AtomsButton label="Delete" @click.stop="deleteTodo" />
+      <AtomsButton
+        label="Delete"
+        data-testid="delete"
+        @click.stop="deleteTodo"
+      />
     </div>
   </li>
 </template>
